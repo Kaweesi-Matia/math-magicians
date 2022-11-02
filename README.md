@@ -1,6 +1,6 @@
-# Math Magicians : Setup
+# Math Magicians : Add components
 
-This is the first project of the Math Magicians application. You will set up the environment and tools needed to develop a React application. In the following projects, you will develop the actual application.
+This is the second project of the Math Magicians application. You will set up the environment and tools needed to develop a React application.in this project, i created calcultor component for React. In the following projects, you will develop the actual application.
 
 ## Website Live Demo Link
 
