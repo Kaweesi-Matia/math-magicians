@@ -5,7 +5,9 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+
+    };
   }
 
   render() {
@@ -13,6 +15,7 @@ class App extends Component {
       <div className="App">
         <h1>MATH CALCULATOR</h1>
         <Calculator />
+
       </div>
     );
   }
