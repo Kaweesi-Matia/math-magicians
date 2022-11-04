@@ -1,24 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import Calculator from './components/calculator';
 
-class App extends Component {
+class ShowCalculator extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   render() {
     return (
-      <div className="App">
-        <h1>MATH CALCULATOR</h1>
-        <Calculator />
-
-      </div>
+      <Calculator />
     );
   }
 }
 
-export default App;
+export default ShowCalculator;

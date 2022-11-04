@@ -1,64 +1,94 @@
-import React, { Component } from 'react';
-import calculate from './logic/calculator';
+import React, { useState } from 'react';
 
-export default class Calculator extends Component {
-  constructor(props) {
-    super(props);
+import calculate from './logic/calculate';
 
-    this.state = {
-      total: null,
-      next: null,
-      operation: null,
+const Calculator = () => {
+  const startState = {
+    total: 0,
+    next: '',
+    operation: '',
+  };
+  const [state, setState] = useState(startState);
+  const { total, next, operation } = state;
 
-    };
-    this.clickFunction = this.clickFunction.bind(this);
-  }
-
-clickFunction =(e) => {
-  this.setState((currentState) => calculate({
-    total: currentState.total,
-    next: currentState.next,
-    operation: currentState.operation,
-  }, e.target.name));
-}
-
-render() {
-  const { total, next, operation } = this.state;
+  const clickFunction = (event) => {
+    const TargetValue = event.target.value;
+    const updateState = calculate(state, TargetValue);
+    setState(updateState);
+  };
 
   return (
     <div className="container">
-      <button type="button" className="row-1">
-        {total || ''}
-        {operation || ''}
-        {next || ''}
-      </button>
-
-      <button type="button" onClick={this.clickFunction} name="AC" className="ac">AC</button>
-      <button type="button" onClick={this.clickFunction} name="+/-" className="plus-minus">+/-</button>
-      <button type="button" onClick={this.clickFunction} name="%" className="percentage">%</button>
-      <button type="button" onClick={this.clickFunction} name="÷" className="signs">÷</button>
-
-      <button type="button" onClick={this.clickFunction} name="7" className="seven">7</button>
-
-      <button type="button" onClick={this.clickFunction} name="8" className="eight">8</button>
-      <button type="button" onClick={this.clickFunction} name="9" className="nine">9</button>
-      <button type="button" onClick={this.clickFunction} name="x" className="signs">x</button>
-
-      <button type="button" onClick={this.clickFunction} name="4" className="four">4</button>
-      <button type="button" onClick={this.clickFunction} name="5" className="five">5</button>
-      <button type="button" onClick={this.clickFunction} name="6" className="six">6</button>
-      <button type="button" onClick={this.clickFunction} name="-" className="signs">-</button>
-
-      <button type="button" onClick={this.clickFunction} name="1" className="one">1</button>
-      <button type="button" onClick={this.clickFunction} name="2" className="two">2</button>
-      <button type="button" onClick={this.clickFunction} name="3" className="three">3</button>
-      <button type="button" onClick={this.clickFunction} name="+" className="signs">+</button>
-
-      <button type="button" onClick={this.clickFunction} name="0" className="zero">0</button>
-      <button type="button" onClick={this.clickFunction} name="." className="decimal">.</button>
-      <button type="button" onClick={this.clickFunction} name="=" className="signs">=</button>
-
+      <div className="row-1">
+        <p>
+          {total}
+          {' '}
+          {operation}
+          {' '}
+          {next}
+          {' '}
+        </p>
+      </div>
+      <div className="main-div">
+        <button onClick={clickFunction} type="button" className="AC" value="AC">
+          AC
+        </button>
+        <button onClick={clickFunction} type="button" className="plus-minus" value="+/-">
+          +/-
+        </button>
+        <button onClick={clickFunction} type="button" className="division" value="%">
+          %
+        </button>
+        <button onClick={clickFunction} type="button" className="btn signs" value="&#247;">
+          &#247;
+        </button>
+        <button onClick={clickFunction} type="button" className="seven" value="7">
+          7
+        </button>
+        <button onClick={clickFunction} type="button" className="eight" value="8">
+          8
+        </button>
+        <button onClick={clickFunction} type="button" className="nine" value="9">
+          9
+        </button>
+        <button onClick={clickFunction} type="button" className="multiply signs" value="x">
+          x
+        </button>
+        <button onClick={clickFunction} type="button" className="four" value="4">
+          4
+        </button>
+        <button onClick={clickFunction} type="button" className="five" value="5">
+          5
+        </button>
+        <button onClick={clickFunction} type="button" className="six" value="6">
+          6
+        </button>
+        <button onClick={clickFunction} type="button" className="minus signs" value="-">
+          -
+        </button>
+        <button onClick={clickFunction} type="button" className="one" value="1">
+          1
+        </button>
+        <button onClick={clickFunction} type="button" className="two" value="2">
+          2
+        </button>
+        <button onClick={clickFunction} type="button" className="three" value="3">
+          3
+        </button>
+        <button onClick={clickFunction} type="button" className="plus signs" value="+">
+          +
+        </button>
+        <button onClick={clickFunction} type="button" className="zero" value="0">
+          0
+        </button>
+        <button onClick={clickFunction} type="button" className="dot" value=".">
+          .
+        </button>
+        <button onClick={clickFunction} type="button" className="equal signs" value="=">
+          =
+        </button>
+      </div>
     </div>
   );
-}
-}
+};
+export default Calculator;
