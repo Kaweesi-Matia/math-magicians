@@ -1,29 +1,29 @@
 import Big from 'big.js';
 
-export default function operate(fisrtNum, secondNum, operation) {
-  const ONE = Big(fisrtNum);
-  const TWO = Big(secondNum);
+export default function operate(numberOne, numberTwo, operation) {
+  const one = Big(numberOne);
+  const two = Big(numberTwo);
   if (operation === '+') {
-    return ONE.plus(TWO).toString();
+    return one.plus(two).toString();
   }
   if (operation === '-') {
-    return ONE.minus(TWO).toString();
+    return one.minus(two).toString();
   }
   if (operation === 'x') {
-    return ONE.times(TWO).toString();
+    return one.times(two).toString();
   }
   if (operation === '÷') {
     try {
-      return ONE.div(TWO).toString();
+      return one.div(two).toString();
     } catch (err) {
       return "Can't divide by 0.";
     }
   }
   if (operation === '%') {
     try {
-      return ONE.mod(TWO).toString();
+      return one.mod(two).toString();
     } catch (err) {
-      return "Can't divide by 0.";
+      return "Can't find modulo as can't divide by 0.";
     }
   }
   throw Error(`Unknown operation '${operation}'`);
